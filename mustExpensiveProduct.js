@@ -1,7 +1,8 @@
 // Trouver le Produit le Plus Cher
 
 // Objectif :
-// Tu as un tableau d'objets représentant des produits et leurs prix. Utilise la déstructuration et les méthodes de tableaux pour trouver le produit le plus cher et afficher ses informations.
+// Tu as un tableau d'objets représentant des produits et leurs prix. Utilise la déstructuration et les méthodes de tableaux pour
+//trouver le produit le plus cher et afficher ses informations.
 
 // Instructions :
 // Crée un tableau products qui contient des objets représentant chaque produit, avec les propriétés name et price.
@@ -15,15 +16,10 @@ const products = [
   { name: "Produit D", price: 400 },
 ];
 
-// Trouver le produit le plus cher avec reduce
-mostExpensiveProduct = (ExpensiveProduct, Product) => {
-  const { price } = Product;
-  if (Product < ExpensiveProduct[price]) {
-    return ExpensiveProduct[price];
-  }
-  products[0];
-};
-products.reduce(mostExpensiveProduct, {});
+const mostExpensiveProduct = products.reduce((max, currentProduct) => {
+  const { price } = currentProduct;
+  return price > max.price ? currentProduct : max;
+}, products[0]);
 
 console.log(
   `Le produit le plus cher est : ${mostExpensiveProduct.name} au prix de ${mostExpensiveProduct.price} €`
