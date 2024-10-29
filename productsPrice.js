@@ -1,11 +1,13 @@
 // Mise à jour des Prix des Produits
 
 // Objectif :
-// Certains produits bénéficient d'une réduction de 20 %. Utilise la déstructuration et le spread operator pour mettre à jour les prix des produits en appliquant la réduction à certains d'entre eux sans modifier la liste originale.
+// Certains produits bénéficient d'une réduction de 20 %. Utilise la déstructuration et le spread operator pour mettre à jour
+// les prix des produits en appliquant la réduction à certains d'entre eux sans modifier la liste originale.
 
 // Instructions :
 // Crée un tableau products qui contient des objets représentant chaque produit, avec les propriétés name et price.
-// Utilise le spread operator pour copier chaque produit et appliquer une réduction de 20 % sur certains produits (ceux dont le nom contient le mot "Promo").
+// Utilise le spread operator pour copier chaque produit et appliquer une réduction de 20 % sur certains produits
+//(ceux dont le nom contient le mot "Promo").
 // Affiche la liste originale et la liste mise à jour.
 
 const products = [
@@ -15,13 +17,23 @@ const products = [
   { name: "Produit Promo D", price: 250 },
 ];
 
-const updatedProducts = [...products];
-let { name, price } = products;
-// Appliquer une réduction de 20 % sur les produits en promotion
+let updatedProducts = [];
+products.forEach((produit) => {
+  updatedProducts.push({ ...produit });
+});
 
-if ((name = "Promo")) {
-  const { name, price = price * 0.8 } = products;
-}
+updatedProducts.forEach((product) => {
+  const { name } = product;
+
+  const splitName = name.split(" ");
+  splitName.forEach((word) => {
+    if (word === "Promo") {
+      product.price = product.price * 0.8;
+    }
+  });
+});
+
+// Appliquer une réduction de 20 % sur les produits en promotion
 
 console.log("Produits originaux :", products); // Liste originale
 console.log("Produits mis à jour :", updatedProducts); // Liste avec réduction
@@ -40,3 +52,5 @@ console.log("Produits mis à jour :", updatedProducts); // Liste avec réduction
 //     { name: 'Produit C', price: 200 },
 //     { name: 'Produit Promo D', price: 200 }
 //   ]
+
+//OK //
